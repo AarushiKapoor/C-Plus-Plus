@@ -1,47 +1,40 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
-
-int LinearSearch(int *array, int size, int key)
+class Searching
 {
-	for (int i = 0; i < size; ++i)
-	{
-		if (array[i] == key)
-		{
-			return i;
-		}
-	}
-
-	return -1;
+    int a[10],n,i;
+public:
+    void Input();
+    void Linear();
+};
+void Searching::Input()
+{
+    cout<<"Enter Total number of elements:";
+    cin>>n;
+    cout<<"\nEnter them one by one:";
+    for(i=0;i<n;i++)
+    {
+        cin>>a[i];
+    }
 }
-
+//Linear Search
+void Searching::Linear()
+{
+    int ele,f=0;
+    cout<<"\nEnter the number to be searched:";
+    cin>>ele;
+    for(i=0;((i<n)&&(f==0));i++)
+        if(a[i]==ele)
+            f=1;
+        if(f==0)
+            cout<<"Element does not exist";
+        else
+            cout<<"Element exists in "<<i-1<<" position";
+}
 int main()
 {
-	int size;
-	cout << "\nEnter the size of the Array : ";
-	cin >> size;
-
-	int array[size];
-	int key;
-
-	//Input array
-	cout << "\nEnter the Array of " << size << " numbers : ";
-	for (int i = 0; i < size; i++)
-	{
-		cin >> array[i];
-	}
-
-	cout << "\nEnter the number to be searched : ";
-	cin >> key;
-
-	int index = LinearSearch(array, size, key);
-	if (index != -1)
-	{
-		cout << "\nNumber found at index : " << index;
-	}
-	else
-	{
-		cout << "\nNot found";
-	}
-
-	return 0;
+    Searching S;
+    S.Input();
+    S.Linear();
+    return 0;
 }
