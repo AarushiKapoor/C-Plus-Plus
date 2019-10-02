@@ -1,52 +1,47 @@
-//Bubble Sort
-
 #include <iostream>
-#include <vector>
 using namespace std;
-
+class array
+{
+    int a[20],i,n;
+public:
+    void Input();
+    void Output();
+    void Bubble();
+};
+void array::Input()
+{
+    cout<<"Enter the no. of elements:";
+    cin>>n;
+    cout<<"\nEnter the Elements one by one";
+    for(i=0;i<n;i++)
+        {cin>>a[i];}
+}
+void array::Output()
+{
+    cout<<"\nOutput:";
+    for(i=0;i<n;i++)
+        {cout<<a[i]<<endl;}
+}
+void array::Bubble()
+{
+    int j,temp;
+    for(i=0;i<n-1;i++)
+    {
+        for(j=0;j<n-1-i;j++)
+            if(a[j]>a[j+1])
+            {
+                temp=a[j];
+                a[j]=a[j+1];
+                a[j+1]=temp;
+            }
+    }
+}
 int main()
 {
-	int n;
-	short swap_check = 1;
-	cout << "Enter the amount of numbers to sort: ";
-	cin >> n;
-	vector<int> numbers;
-	cout << "Enter " << n << " numbers: ";
-	int num;
-
-	//Input
-	for (int i = 0; i < n; i++)
-	{
-		cin >> num;
-		numbers.push_back(num);
-	}
-
-	//Bubble Sorting
-	for (int i = 0; (i < n) && (swap_check == 1); i++)
-	{
-		swap_check = 0;
-		for (int j = 0; j < n - 1 - i; j++)
-		{
-			if (numbers[j] > numbers[j + 1])
-			{
-				swap_check = 1;
-				swap(numbers[j], numbers[j + 1]);
-			}
-		}
-	}
-
-	//Output
-	cout << "\nSorted Array : ";
-	for (int i = 0; i < numbers.size(); i++)
-	{
-		if (i != numbers.size() - 1)
-		{
-			cout << numbers[i] << ", ";
-		}
-		else
-		{
-			cout << numbers[i] << endl;
-		}
-	}
-	return 0;
+    array A;
+    A.Input();
+    A.Bubble();
+    A.Output();
+    return 0;
 }
+
