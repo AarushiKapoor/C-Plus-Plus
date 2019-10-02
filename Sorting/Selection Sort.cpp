@@ -1,39 +1,53 @@
-//Selection Sort
-
 #include <iostream>
 using namespace std;
-
+class array
+{
+    int a[20],i,n;
+public:
+    void Input();
+    void Output();
+    void Selection();
+};
+void array::Input()
+{
+    cout<<"Enter the no. of elements:";
+    cin>>n;
+    cout<<"\nEnter the Elements one by one";
+    for(i=0;i<n;i++)
+        {cin>>a[i];}
+}
+void array::Output()
+{
+    cout<<"\nOutput:";
+    for(i=0;i<n;i++)
+        {cout<<a[i]<<endl;}
+}
+void array::Selection()
+{
+    int temp,j,small,pos;
+    for(i=0;i<n-1;i++)
+    {
+        pos=i;
+        small=a[i];
+        for(j=i+1;j<n;j++)
+            {
+                if(a[j]<small)
+                {
+                    pos=j;
+                    small=a[j];
+                }
+            }
+            temp=a[i];
+            a[i]=a[pos];
+            a[pos]=temp;
+    }
+}
 int main()
 {
-	int Array[6];
-	cout << "\nEnter any 6 Numbers for Unsorted Array : ";
-
-	//Input
-	for (int i = 0; i < 6; i++)
-	{
-		cin >> Array[i];
-	}
-
-	//Selection Sorting
-	for (int i = 0; i < 6; i++)
-	{
-		int min = i;
-		for (int j = i + 1; j < 6; j++)
-		{
-			if (Array[j] < Array[min])
-			{
-				min = j; //Finding the smallest number in Array
-			}
-		}
-		int temp = Array[i];
-		Array[i] = Array[min];
-		Array[min] = temp;
-	}
-
-	//Output
-	cout << "\nSorted Array : ";
-	for (int i = 0; i < 6; i++)
-	{
-		cout << Array[i] << "\t";
-	}
+    array A;
+    A.Input();
+    A.Selection();
+    A.Output();
+    return 0;
 }
+
